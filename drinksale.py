@@ -1,5 +1,9 @@
 import tkinter
+import gspread
 
+
+gc = gspread.service_account(filename=r"C:\Users\mhdsc\Downloads\drinksaleapp.json")
+sh = gc.open_by_url("https://docs.google.com/spreadsheets/d/1w5IcUmBmAlOJwQCEcyrtSCvH5n7Il30Sy0r725q_B4k/edit?pli=1#gid=0")
 root = tkinter.Tk()
 root.title("Drink Sale")
 #we are making print for graphical invirement
@@ -20,20 +24,23 @@ def get_name():
    actual_name=name.get()
    name_prompt.destroy()
    name.destroy()
+   tkinter.Label(root, text=actual_name).grid(row=0,column=0)
+   tkinter.Label(root, text='balance: 20$').grid(row=0, column=1)
+   tkinter. Button(root, text = 'Click Me !', image = ictea_photo).grid(row=5)   
+   tkinter. Button(root, text = 'ClickMe !', image = photo).grid(row=15)
+   tkinter. Button(root, text = 'Click Me!', image = photolemonade).grid(column= 1 , row=5)
+   tkinter. Button(root, text = 'Click Me ', image = photophoto).grid(column= 1, row=15)
 
 go["command"]=get_name
-# tkinter.Label(root, text=actual_name).grid(row=0,column=0)
 
-tkinter. Button(root, text = 'Click Me !', image = ictea_photo).grid(row=5) 
-tkinter. Button(root, text = 'ClickMe !', image = photo).grid(row=15)
-tkinter. Button(root, text = 'Click Me!', image = photolemonade).grid(column= 1 , row=5)
-tkinter. Button(root, text = 'Click Me ', image = photophoto).grid(column= 1, row=15)
+
+
 
 go.grid(column=2, row=0)
 
 
 
-# tkinter.Label(root, text='balance: 20$') 
+ 
 
 
 # tkinter.Label(root, text="What drink do you want?").grid(column=1)
