@@ -18,12 +18,7 @@ def get_name():
    name_prompt.destroy()
    name.destroy()
 
-go["command"]=get_name
-tkinter.Label(root, text=actual_name).grid(row=0,column=0)
-photo=tkinter.PhotoImage(file="assets/ice-tea.png")
-tkinter. Button(root, text = 'Click Me !', image = photo).grid(row=5) 
 
-go.grid(column=2, row=0)
 
 
 
