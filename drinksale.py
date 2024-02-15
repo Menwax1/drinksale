@@ -10,7 +10,10 @@ name = tkinter.Entry(root)
 name.grid(row=0,column=1)
 
 actual_name=""
-
+ictea_photo=tkinter.PhotoImage(file="assets/ice-tea.png")
+photo=tkinter.PhotoImage(file="assets/snow-cone.png")
+photolemonade=tkinter.PhotoImage(file="assets/lemonade.png")
+photophoto=tkinter.PhotoImage(file="assets/cocoa.png")
 go=tkinter.Button(root, text="Go")
 def get_name():
    go.destroy()
@@ -18,7 +21,15 @@ def get_name():
    name_prompt.destroy()
    name.destroy()
 
+go["command"]=get_name
+# tkinter.Label(root, text=actual_name).grid(row=0,column=0)
 
+tkinter. Button(root, text = 'Click Me !', image = ictea_photo).grid(row=5) 
+tkinter. Button(root, text = 'ClickMe !', image = photo).grid(row=15)
+tkinter. Button(root, text = 'Click Me!', image = photolemonade).grid(column= 1 , row=5)
+tkinter. Button(root, text = 'Click Me ', image = photophoto).grid(column= 1, row=15)
+
+go.grid(column=2, row=0)
 
 
 
