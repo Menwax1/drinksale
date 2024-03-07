@@ -3,15 +3,21 @@ import gspread
 
 root = tkinter.Tk()
 root.title("Drink Sale")
-gc = gspread.service_account(filename=r"C:\Users\mhdsc\Downloads\drinksaleapp.json")
+#gc = gspread.service_account(filename=r"C:\Users\mhdsc\Downloads\drinksaleapp.json")
+gc = gspread.service_account(filename=r"C:\Users\waksm\Downloads\drinksaleapp.json")
 sh = gc.open_by_url(
         "https://docs.google.com/spreadsheets/d/1w5IcUmBmAlOJwQCEcyrtSCvH5n7Il30Sy0r725q_B4k/edit?pli=1#gid=0"
     )
-
+ch = gc.open_by_url(
+        "https://docs.google.com/spreadsheets/d/1uRiz65hyUq0bcF1FSpKUb0coWActURXMXKHfB9hiLDg/edit#gid=0"
+    )
 ictea_photo = tkinter.PhotoImage(file="assets/ice-tea.png")
 photo = tkinter.PhotoImage(file="assets/snow-cone.png")
 photolemonade = tkinter.PhotoImage(file="assets/lemonade.png")
 photophoto = tkinter.PhotoImage(file="assets/cocoa.png")
+lemonadegif = tkinter.PhotoImage(file="assets/giphy.gif")
+banner = tkinter.PhotoImage(file="assets/Drink Sale Boys (2).png").subsample(2, 2)
+
 def make_order():
     print("in make order")
 
@@ -45,6 +51,7 @@ def make_order():
                 sh.get_worksheet(0).update_acell(
                     f"H{index+1}", previous_hcs.numeric_value + 1
                 )
+                ch.get_worksheet(0).append_row([f'{name} hotcocoa'])
                 delete_buttons()
 
             def PINKLEMONADE():
@@ -52,6 +59,7 @@ def make_order():
                 sh.get_worksheet(0).update_acell(
                     f"C{index+1}", previous_hcs.numeric_value + 1
                 )
+                ch.get_worksheet(0).append_row([f'{name} lemonade'])
                 delete_buttons()
 
             def ICETEA():
@@ -60,6 +68,7 @@ def make_order():
                 sh.get_worksheet(0).update_acell(
                     f"E{index+1}", previous_hcs.numeric_value + 1
                 )
+                ch.get_worksheet(0).append_row([f'{name} icetea'])
                 delete_buttons()
 
             def SnoconeSpecial():
@@ -67,6 +76,7 @@ def make_order():
                 sh.get_worksheet(0).update_acell(
                     f"F{index+1}", previous_hcs.numeric_value + 1
                 )
+                ch.get_worksheet(0).append_row([f'{name} snocone'])
                 delete_buttons()
 
             name_prompt.destroy()
@@ -98,7 +108,9 @@ def make_order():
    #  families.sort()
     name_prompt = tkinter.Label(root, text="Click on YOUR Family Name")
     name_prompt.grid(row=0, column=0)
+    
     count = 2
+    # 
     for i in range(40 // 5):
         for j in range(5):
             index = i * 5 + j
@@ -108,7 +120,9 @@ def make_order():
                button_list.append(go)
                count += 1
 
-
+    banner_l = tkinter.Label(root, image=banner)
+    button_list.append(banner_l)
+    banner_l.grid(row = 9, columnspan=5)
 
 
    #  go.grid(column=2, row=0)

@@ -3,7 +3,7 @@ import gspread
 
 root = tkinter.Tk()
 root.title("Drink Sale")
-gc = gspread.service_account(filename=r"C:\Users\mhdsc\Downloads\drinksaleapp.json")
+gc = gspread.service_account(filename=r"C:\Users\waksm\Downloads\drinksaleapp.json")
 
 
 sh = gc.open_by_url(
@@ -19,18 +19,22 @@ ws = sh.get_worksheet(0)
 # orders = ws.col_values(1)[2::]
 buttons = []
 def refresh():
+    print("data")
     for b in buttons:
         b.destroy()
     # root.destroy()
     # root.__init__()
-    index  = 2
+    # index  = 2
     orders = ws.col_values(1)[2::]
-    for order in orders:
+    for index, order in enumerate(orders):
+        print(locals())
+        print(index, order)
         check = tkinter.Button(text=order)
+        index_copy = index + 2
         def delete(): 
-            check.destroy();
-            ws.delete_rows(index)
-            index = 2
+            print(f"deleting {index_copy}")
+            check.destroy()
+            ws.delete_rows(index_copy)
             refresh()
    
         buttons.append(check)
