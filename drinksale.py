@@ -3,20 +3,24 @@ import gspread
 
 root = tkinter.Tk()
 root.title("Drink Sale")
-#gc = gspread.service_account(filename=r"C:\Users\mhdsc\Downloads\drinksaleapp.json")
-gc = gspread.service_account(filename=r"C:\Users\waksm\Downloads\drinksaleapp.json")
+gc = gspread.service_account(filename=r"C:\Users\mhdsc\Downloads\drinksaleapp.json")
+#gc = gspread.service_account(filename=r"C:\Users\waksm\Downloads\drinksaleapp.json")
 sh = gc.open_by_url(
         "https://docs.google.com/spreadsheets/d/1w5IcUmBmAlOJwQCEcyrtSCvH5n7Il30Sy0r725q_B4k/edit?pli=1#gid=0"
     )
 ch = gc.open_by_url(
         "https://docs.google.com/spreadsheets/d/1uRiz65hyUq0bcF1FSpKUb0coWActURXMXKHfB9hiLDg/edit#gid=0"
     )
-ictea_photo = tkinter.PhotoImage(file="assets/ice-tea.png")
-photo = tkinter.PhotoImage(file="assets/snow-cone.png")
-photolemonade = tkinter.PhotoImage(file="assets/lemonade.png")
-photophoto = tkinter.PhotoImage(file="assets/cocoa.png")
-lemonadegif = tkinter.PhotoImage(file="assets/giphy.gif")
+ictea_photo = tkinter.PhotoImage(file="assets/ice-tea.png").subsample(2, 2)
+photo = tkinter.PhotoImage(file="assets/snow-cone.png").subsample(2, 2)
+photolemonade = tkinter.PhotoImage(file="assets/lemonade.png").subsample(2, 2)
+photophoto = tkinter.PhotoImage(file="assets/cocoa.png").subsample(2, 2)
+lemonadegif = tkinter.PhotoImage(file="assets/giphy.gif").subsample(2, 2)
 banner = tkinter.PhotoImage(file="assets/Drink Sale Boys (2).png").subsample(2, 2)
+Marshmallow = tkinter.PhotoImage(file="assets/Marsh.png")
+special = tkinter.PhotoImage(file="assets/giphy.gif").subsample(2, 2)
+
+
 
 def make_order():
     print("in make order")
@@ -43,6 +47,9 @@ def make_order():
                 iced_tea_button.destroy()
                 snow_cone_button.destroy()
                 lemonade_button.destroy()
+                special_button.destroy()
+                
+                # Marshmallow_button.destroy()
                 # and restart
                 make_order()
 
@@ -71,7 +78,24 @@ def make_order():
                 ch.get_worksheet(0).append_row([f'{name} icetea'])
                 delete_buttons()
 
-            def SnoconeSpecial():
+            def Snocone():
+                previous_hcs = sh.get_worksheet(0).acell(f"H{index+1}")
+                sh.get_worksheet(0).update_acell(
+                    f"H{index+1}", previous_hcs.numeric_value + 1
+                )
+                ch.get_worksheet(0).append_row([f'{name} snocone'])
+                print("snowcone")
+                delete_buttons()            
+                
+            def Topping():
+                previous_hcs = sh.get_worksheet(0).acell(f"G{index+1}")
+                sh.get_worksheet(0).update_acell(
+                    f"F{index+1}", previous_hcs.numeric_value + 1
+                )
+                ch.get_worksheet(0).append_row([f'{name} snocone'])
+                delete_buttons() 
+            
+            def Special():
                 previous_hcs = sh.get_worksheet(0).acell(f"F{index+1}")
                 sh.get_worksheet(0).update_acell(
                     f"F{index+1}", previous_hcs.numeric_value + 1
@@ -90,9 +114,10 @@ def make_order():
             )
             iced_tea_button.grid(row=5)
             snow_cone_button = tkinter.Button(
-                root, text="ClickMe !", image=photo, command=SnoconeSpecial
+                root, text="ClickMe !", image=photo, command=Snocone
             )
             snow_cone_button.grid(row=15)
+        
             lemonade_button = tkinter.Button(
                 root, text="Click Me!", image=photolemonade, command=PINKLEMONADE
             )
@@ -100,8 +125,12 @@ def make_order():
             hot_cocoa_buttom = tkinter.Button(
                 root, text="Click Me ", image=photophoto, command=hotcocoa
             )
-            hot_cocoa_buttom.grid(column=1, row=15)
-
+            hot_cocoa_buttom.grid(column=1, row=15)            
+            special_button = tkinter.Button(
+            root, text="Click Me ", image=special, command=Special
+            )
+            special_button.grid(column=2, row=15)  
+            
         return inner
 
     families = sh.get_worksheet(0).col_values(1)[2::]
