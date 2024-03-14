@@ -3,8 +3,8 @@ import gspread
 
 root = tkinter.Tk()
 root.title("Drink Sale")
-gc = gspread.service_account(filename=r"C:\Users\mhdsc\Downloads\drinksaleapp.json")
-#gc = gspread.service_account(filename=r"C:\Users\waksm\Downloads\drinksaleapp.json")
+#gc = gspread.service_account(filename=r"C:\Users\mhdsc\Downloads\drinksaleapp.json")
+gc = gspread.service_account(filename=r"C:\Users\waksm\Downloads\drinksaleapp.json")
 sh = gc.open_by_url(
         "https://docs.google.com/spreadsheets/d/1w5IcUmBmAlOJwQCEcyrtSCvH5n7Il30Sy0r725q_B4k/edit?pli=1#gid=0"
     )

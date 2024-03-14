@@ -16,32 +16,39 @@ def refresh():
     root.__init__()
 
 ws = sh.get_worksheet(0)
+tuple = (1, 2)
+
 # orders = ws.col_values(1)[2::]
 buttons = []
 def refresh():
     print("data")
     for b in buttons:
-        b.destroy()
+        b[0].destroy()
     # root.destroy()
     # root.__init__()
     # index  = 2
-    orders = ws.col_values(1)[2::]
-    for index, order in enumerate(orders):
-        print(locals())
-        print(index, order)
-        check = tkinter.Button(text=order)
-        index_copy = index + 2
-        def delete(): 
-            print(f"deleting {index_copy}")
-            check.destroy()
-            ws.delete_rows(index_copy)
+    # enumarate
+    # lets say we have ["a", "b", "c"]
+    # calling enumerate 
+    # [.. (2, "c")]
+    orders = ws.col_values(1).enumerate()[2::]
+    # tuple is an index into the spreadsheet and the corresponding data for the order
+    # return button to delete the order
+    def make_order(tuple):
+        def order_done():
+            print(f"order done {tuple[1]}")
+            ws.delete_rows(tuple[0])
             refresh()
-   
-        buttons.append(check)
-        check["command"]= delete
-        check.pack()
+        order_button = tkinter.Button(text=tuple[1],  command=order_done)
+        return order_button
+    # lets say we have [1, 2 , 3]
+    # lets say we have a function that takes in a number and adds 1 to it (add1)
+    # [1,2,3].map(add1) = [2, 3, 4]
+    order = orders.map(make_order)
+    for order in orders:
+        buttons.append(order)
+        order.pack()
 
-        index+=1
     
 
 
