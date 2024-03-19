@@ -54,53 +54,53 @@ def make_order():
                 make_order()
 
             def hotcocoa():
-                previous_hcs = sh.get_worksheet(0).acell(f"H{index+1}")
-                sh.get_worksheet(0).update_acell(
-                    f"H{index+1}", previous_hcs.numeric_value + 1
-                )
-                ch.get_worksheet(0).append_row([f'{name} hotcocoa'])
+                # previous_hcs = sh.get_worksheet(0).acell(f"H{index+1}")
+                # sh.get_worksheet(0).update_acell(
+                #     f"H{index+1}", previous_hcs.numeric_value + 1
+                # )
+                ch.get_worksheet(0).append_row([f'{name}|hotcocoa|{index+1}'])
                 delete_buttons()
 
             def PINKLEMONADE():
-                previous_hcs = sh.get_worksheet(0).acell(f"C{index+1}")
-                sh.get_worksheet(0).update_acell(
-                    f"C{index+1}", previous_hcs.numeric_value + 1
-                )
-                ch.get_worksheet(0).append_row([f'{name} lemonade'])
+                # previous_hcs = sh.get_worksheet(0).acell(f"C{index+1}")
+                # sh.get_worksheet(0).update_acell(
+                #     f"C{index+1}", previous_hcs.numeric_value + 1
+                # )
+                ch.get_worksheet(0).append_row([f'{name}|lemonade|{index+1}'])
                 delete_buttons()
 
             def ICETEA():
                 print(index+1)
-                previous_hcs = sh.get_worksheet(0).acell(f"E{index+1}")
-                sh.get_worksheet(0).update_acell(
-                    f"E{index+1}", previous_hcs.numeric_value + 1
-                )
-                ch.get_worksheet(0).append_row([f'{name} icetea'])
+                # previous_hcs = sh.get_worksheet(0).acell(f"E{index+1}")
+                # sh.get_worksheet(0).update_acell(
+                #     f"E{index+1}", previous_hcs.numeric_value + 1
+                # )
+                ch.get_worksheet(0).append_row([f'{name}|icetea|{index+1}'])
                 delete_buttons()
 
             def Snocone():
-                previous_hcs = sh.get_worksheet(0).acell(f"H{index+1}")
-                sh.get_worksheet(0).update_acell(
-                    f"H{index+1}", previous_hcs.numeric_value + 1
-                )
-                ch.get_worksheet(0).append_row([f'{name} snocone'])
+                # previous_hcs = sh.get_worksheet(0).acell(f"H{index+1}")
+                # sh.get_worksheet(0).update_acell(
+                #     f"H{index+1}", previous_hcs.numeric_value + 1
+                # )
+                ch.get_worksheet(0).append_row([f'{name}|snocone|{index+1}'])
                 print("snowcone")
                 delete_buttons()            
                 
-            def Topping():
-                previous_hcs = sh.get_worksheet(0).acell(f"G{index+1}")
-                sh.get_worksheet(0).update_acell(
-                    f"F{index+1}", previous_hcs.numeric_value + 1
-                )
-                ch.get_worksheet(0).append_row([f'{name} snocone'])
-                delete_buttons() 
+            # def Topping():
+            #     previous_hcs = sh.get_worksheet(0).acell(f"G{index+1}")
+            #     sh.get_worksheet(0).update_acell(
+            #         f"F{index+1}", previous_hcs.numeric_value + 1
+            #     )
+            #     ch.get_worksheet(0).append_row([f'{name} topping'])
+            #     delete_buttons() 
             
             def Special():
-                previous_hcs = sh.get_worksheet(0).acell(f"F{index+1}")
-                sh.get_worksheet(0).update_acell(
-                    f"F{index+1}", previous_hcs.numeric_value + 1
-                )
-                ch.get_worksheet(0).append_row([f'{name} snocone'])
+                # previous_hcs = sh.get_worksheet(0).acell(f"F{index+1}")
+                # sh.get_worksheet(0).update_acell(
+                #     f"F{index+1}", previous_hcs.numeric_value + 1
+                # )
+                ch.get_worksheet(0).append_row([f'{name}|special|{index+1}'])
                 delete_buttons()
 
             name_prompt.destroy()
