@@ -82,15 +82,20 @@ def refresh():
             ws.delete_rows(tuple[0]+1) 
             refresh()
         order_button = tkinter.Button(text=tuple[1],  command=order_done)
+        shut_up_button = tkinter.Button(text=tuple[1],  command=dealete)
         return order_button
     # lets say we have [1, 2 , 3]
     # lets say we have a function that takes in a number and adds 1 to it (add1)
     # [1,2,3].map(add1) = [2, 3, 4]
+
     orders = map(make_order, orders)
     for order in orders:
         buttons.append(order)
         order.pack()
 
+
+ws.delete_rows(tuple[0]+1) 
+refresh()
     
 
 
