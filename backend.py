@@ -19,7 +19,7 @@ sh = gc.open_by_url(
 real_spread_sheet = gc.open_by_url(
         #"https://docs.google.com/spreadsheets/d/1w5IcUmBmAlOJwQCEcyrtSCvH5n7Il30Sy0r725q_B4k/edit?pli=1#gid=0"
         #real real
-        "https://docs.google.com/spreadsheets/d/1OgOKaxaLQMC1VgilqXOLMHad2Vlk0i4TgEzaXvT5464/edit#gid=0"
+        #"https://docs.google.com/spreadsheets/d/1OgOKaxaLQMC1VgilqXOLMHad2Vlk0i4TgEzaXvT5464/edit#gid=0"
     )
 def refresh():
     root.destroy()
